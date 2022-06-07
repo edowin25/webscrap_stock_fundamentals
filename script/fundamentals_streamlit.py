@@ -62,12 +62,9 @@ def scrape_data(stocklist: list):
         element = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH,'//*[@id="keyStats"]')))
         element.click()
 
-        #Toclick on key ratio table
+        #To click on key ratio table
         element1 = WebDriverWait(driver, 30).until(EC.presence_of_element_located((By.XPATH,
-                                                                        '''//*[@id="__layout"]/div/div[2]/div[3]/main/div[2]
-                                                                        /div/div/div[1]/div[1]/div[2]/sal-components/div/
-                                                                        sal-components-stocks-quote/div/div/div/div/div/div/
-                                                                        div[2]/div[2]/div/div/div/div[1]/a''')))
+                                                                        '''//*[@id="__layout"]/div/div/div[2]/div[3]/main/div[2]/div/div/div[1]/div[1]/div[2]/sal-components/div/sal-components-stocks-quote/div/div/div/div/div/div/div[2]/div[2]/div/div/div/div[1]/a''')))
 
         element1.click()
 
@@ -194,7 +191,7 @@ with st.container():
         st.subheader('Stock Fundamentals Dataframe')
         stocklist = ticker.split()
         df = scrape_data(stocklist)
-        st.dataframe(df)
+        st.dataframe(df.astype(str))
         
         @st.cache
         def convert_df(df):
